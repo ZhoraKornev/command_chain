@@ -1,8 +1,8 @@
 .SILENT:
 
-include .env
+include ./app/.env
 
-dc = docker-compose -p ${APP_NAME}
+dc = docker compose -p ${APP_NAME}
 
 web = web
 php = php
@@ -15,7 +15,7 @@ bridge = ${DOCKER_BRIDGE}
 http_address = "http://$(bridge)"
 
 build:
-	$(dc) up --build --force-recreate -d
+	$(dc) --env-file ./app/.env up --build --force-recreate -d
 	echo $(http_address)
 
 start:

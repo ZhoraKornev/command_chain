@@ -15,11 +15,10 @@ services:
     logging: *default-logging
 
   db:
-    image: mariadb
-    container_name: example_app_db
-    restart: unless-stopped
-    env_file:
-      - ./.env
+    image: mysql:5.7
+    restart: always
+    expose:
+      - 3306
     volumes:
       - ./db/data:/var/lib/mysql
     logging: *default-logging

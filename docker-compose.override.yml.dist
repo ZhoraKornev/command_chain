@@ -4,8 +4,13 @@ services:
         ports:
             - '8413:1025'
     db:
+        environment:
+            - MYSQL_ROOT_PASSWORD=test
+            - MYSQL_PASSWORD=strongrootpassword
+            - MYSQL_USER=test
+            - MYSQL_DATABASE=strongrootpassword
         ports:
-            - "3939:3306"
+            - "3564:3306"
     nginx:
         ports:
             - "7821:80"
