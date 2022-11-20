@@ -1,0 +1,41 @@
+version: '3.4'
+#@see https://docs.docker.com/compose/compose-file/compose-file-v3/
+x-logging:
+  &default-logging
+  driver: "json-file"
+  options:
+    max-file: "5"
+    max-size: "20m"
+
+services:
+  mailhog:
+    image: mailhog/mailhog
+    container_name: example_app_mailhog
+    restart: unless-stopped
+    logging: *default-logging
+
+  db:
+    image: mariadb
+    container_name: example_app_db
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    volumes:
+      - ./db/data:/var/lib/mysql
+    logging: *default-logging
+
+  php:
+    build:
+      context: ./docker/php/build
+      dockerfile: Dockerfile
+    container_name: example_app_php
+    restart: unless-stopped
+    depends_on:
+      - db
+    volumes:
+      - composer:/root/.composer/cache
+      - ./app:/app
+    logging: *default-logging
+
+volumes:
+  composer:

@@ -1,0 +1,17 @@
+version: '3.4'
+services:
+    mailhog:
+        ports:
+            - '8413:1025'
+    db:
+        ports:
+            - "3939:3306"
+    nginx:
+        ports:
+            - "7821:80"
+            - "7813:8025"
+#    RABBIT PORT for web ui
+    rabbitmq:
+        ports:
+            - "15236:15672"
+
