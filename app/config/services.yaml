@@ -19,6 +19,19 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+    Zhora\CommandChainBundle\:
+        resource: '../bundles/Zhora/CommandChainBundle/src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+    Zhora\BarBundle\:
+        resource: '../bundles/Zhora/BarBundle/src/'
+        exclude:
+            - '../src/Entity/'
+    Zhora\FooBundle\:
+        resource: '../bundles/Zhora/FooBundle/src/'
+        exclude:
+            - '../src/Entity/'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

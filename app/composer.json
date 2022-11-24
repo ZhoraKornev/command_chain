@@ -31,12 +31,15 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/",
+            "Zhora\\CommandChainBundle\\": "bundles/Zhora/CommandChainBundle/src",
+            "Zhora\\BarBundle\\": "bundles/Zhora/BarBundle/src",
+            "Zhora\\FooBundle\\": "bundles/Zhora/FooBundle/src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "App\\Tests\\": "test/"
         }
     },
     "replace": {
