@@ -18,6 +18,26 @@ class ConsoleCommandListener
 
         // write something about the command
         $output->writeln(sprintf('Before running command <info>%s</info>', $command->getName()));
+
+
+        $command = $event->getCommand();
+//
+//        if (!$this->commandProvider->isCommandFromChain($command)) {
+//            return;
+//        }
+//
+//        if ($command instanceof CommandChainingInterface
+//            && $command->isMasterCommand() === false
+//        ) {
+//            $event->stopPropagation();
+//
+//            throw new NotMasterCommandException(get_class($command));
+//        }
+//
+//        if ($command instanceof Command) {
+//            $this->logRegisteredChainCommands($command);
+//        }
+
     }
 
 }

@@ -1,0 +1,11 @@
+parameters:
+    chains:
+        App\UI\Console\FirstMainCommand:
+            - App\UI\ConsoleSecondCommand
+            - App\UI\ConsoleThirdCommand
+            - App\UI\ConsoleSecondCommand
+        App\UI\Console\SecondMainCommand:
+            - App\UI\ConsoleSecondCommand
+            - App\UI\ConsoleThirdCommand
+            - App\UI\ConsoleSecondCommand
+    app.contents_dir: 'testtstst'

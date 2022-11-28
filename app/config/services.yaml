@@ -20,18 +20,11 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
     Zhora\CommandChainBundle\:
-        resource: '../bundles/Zhora/CommandChainBundle/src/'
-        exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
+        resource: '../bundles/CommandChainBundle/src/'
     Zhora\BarBundle\:
-        resource: '../bundles/Zhora/BarBundle/src/'
-        exclude:
-            - '../src/Entity/'
+        resource: '../bundles/BarBundle/src/'
     Zhora\FooBundle\:
-        resource: '../bundles/Zhora/FooBundle/src/'
-        exclude:
-            - '../src/Entity/'
+        resource: '../bundles/FooBundle/src/'
 
     kernel.listener.command_dispatch:
         class: Zhora\CommandChainBundle\EventListener\ConsoleCommandListener

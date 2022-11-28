@@ -41,6 +41,5 @@ class CommandKeeper
         $productsCount = $this->myCachePool->getItem('stats.products_count');
         $productsCount->set('key', $name);
         $this->myCachePool->save($productsCount);
-
     }
 }
