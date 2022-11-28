@@ -1,5 +1,7 @@
 # dockerized command chain
 
+docker compose up -d --build --force-recreate
+
 docker exec -it example_app_php bash
 
 https://github.com/mbessolov/test-tasks/blob/master/7.md

@@ -8,21 +8,6 @@ x-logging:
     max-size: "20m"
 
 services:
-  mailhog:
-    image: mailhog/mailhog
-    container_name: example_app_mailhog
-    restart: unless-stopped
-    logging: *default-logging
-
-  db:
-    image: mysql:5.7
-    restart: always
-    expose:
-      - 3306
-    volumes:
-      - ./db/data:/var/lib/mysql
-    logging: *default-logging
-
   php:
     build:
       context: ./docker/php/build
