@@ -25,8 +25,3 @@ services:
         resource: '../bundles/BarBundle/src/'
     Zhora\FooBundle\:
         resource: '../bundles/FooBundle/src/'
-
-    kernel.listener.command_dispatch:
-        class: Zhora\CommandChainBundle\EventListener\ConsoleCommandListener
-        tags:
-            - { name: kernel.event_listener, event: console.command, priority: 1024 }

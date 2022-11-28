@@ -2,44 +2,34 @@
 
 namespace Zhora\CommandChainBundle\Repository;
 
-use Symfony\Component\Cache\Adapter\ApcuAdapter;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-use Symfony\Contracts\Cache\CacheInterface;
-use Symfony\Contracts\Cache\TagAwareCacheInterface;
-use Symfony\Contracts\Cache\ItemInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Zhora\CommandChainBundle\Enums\ManageOptionEnum;
 
 class CommandKeeper
 {
-    private CacheInterface $myCachePool;
+    private ParameterBagInterface $params;
 
-    public function __construct(CacheInterface $myCachePool)
+    public function __construct(ParameterBagInterface $params)
     {
-        $this->myCachePool = $myCachePool;
-
+        $this->params = $params;
     }
 
-    public function getRegisteredCommands()
+    public function getRegisteredCommands(): array
     {
-        $value0 = $this->myCachePool->get('item_0', function (ItemInterface $item) {
-            $item->tag(['foo', 'bar']);
-
-            return 'debug';
-        });
-
-        $value1 = $this->myCachePool->get('item_1', function (ItemInterface $item) {
-            $item->tag('foo');
-
-            return 'debug';
-        });
-
-        // Remove all cache keys tagged with "bar"
-        $this->myCachePool->invalidateTags(['bar']);
+        $result = [];
+        //TODO put this into cache for best performance
+        if ($this->params->get(ManageOptionEnum::COMMAND_CHAIN_PARAM_NAME)) {
+            $result = $this->params->get(ManageOptionEnum::COMMAND_CHAIN_PARAM_NAME);
+        }
+        return $result;
     }
 
-    public function registerCommand(string $name)
+    public function getSubChainCommands(string $masterChainName): array
     {
-        $productsCount = $this->myCachePool->getItem('stats.products_count');
-        $productsCount->set('key', $name);
-        $this->myCachePool->save($productsCount);
+        $result = [];
+        if (empty($this->getRegisteredCommands()[$masterChainName])) {
+            return $result;
+        }
+        return $this->getRegisteredCommands()[$masterChainName];
     }
 }

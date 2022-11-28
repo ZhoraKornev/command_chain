@@ -1,11 +1,18 @@
 parameters:
-    chains:
-        App\UI\Console\FirstMainCommand:
-            - App\UI\ConsoleSecondCommand
-            - App\UI\ConsoleThirdCommand
-            - App\UI\ConsoleSecondCommand
-        App\UI\Console\SecondMainCommand:
-            - App\UI\ConsoleSecondCommand
-            - App\UI\ConsoleThirdCommand
-            - App\UI\ConsoleSecondCommand
-    app.contents_dir: 'testtstst'
+    command_chain:
+        FirstMasterCommandName:
+            - ConsoleFirstChainCommandName
+            - ConsoleSecondChainCommandName
+            - ConsoleThirdChainCommandName
+        SecondMasterCommandName:
+            - ConsoleFifthChainCommand
+            - ConsoleSecondChainCommand
+            - ConsoleSecondChainCommand
+        foo:hello:
+            - bar:hi
+
+    kernel.listener.command_dispatch:
+        class: Zhora\CommandChainBundle\EventListener\ConsoleCommandListener
+        tags:
+            - { name: kernel.event_listener, event: console.command, priority: 1024 }
+

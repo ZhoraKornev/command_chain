@@ -2,9 +2,9 @@
 
 namespace Zhora\BarBundle;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
-class BarBundle extends Bundle
+class BarBundle extends AbstractBundle
 {
 
 }
