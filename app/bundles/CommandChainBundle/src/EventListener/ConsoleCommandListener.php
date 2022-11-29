@@ -13,7 +13,6 @@ use Zhora\CommandChainBundle\Repository\CommandKeeper;
 class ConsoleCommandListener
 {
     private CommandProvider $commandProvider;
-
     private LoggerInterface $logger;
     private CommandKeeper $commands;
 

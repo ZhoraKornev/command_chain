@@ -14,8 +14,6 @@ services:
       dockerfile: Dockerfile
     container_name: example_app_php
     restart: unless-stopped
-    depends_on:
-      - db
     volumes:
       - composer:/root/.composer/cache
       - ./app:/app
